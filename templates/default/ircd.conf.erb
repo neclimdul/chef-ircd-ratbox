@@ -44,8 +44,9 @@ class "<%= name %>" {
 auth {
     user = "<%= c[:user] %>";
     class = "<%= c[:class] %>";
-    <% unless c[:password] %>
+    <% if c[:password] %>
     password = "<%= c[:password] %>";
+    flags = encrypted;
     <% end %>
 };
 
@@ -58,7 +59,16 @@ operator "<%= o[:nick] %>" {
 };
 
 <% end %>
-/* uncomment and adjust your setting if you're using ratbox-services package. 
+
+<% if node.recipe?('ircd-ratbox::services') %>
+listen {
+    host = "127.0.0.1";
+    port = 5555;
+};
+
+service {
+    name = "ratbox.services";
+};
 
 connect "ratbox.services" {
     host = "127.0.0.1";
@@ -68,8 +78,7 @@ connect "ratbox.services" {
     class = "server";
     flags = topicburst;
 };
-
-*/
+<% end -%>
 
 channel {
     no_create_on_split = no;

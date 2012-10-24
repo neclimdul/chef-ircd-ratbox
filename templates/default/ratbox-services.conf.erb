@@ -4,7 +4,7 @@
 
 /* serverinfo: contains services information */
 serverinfo {
-    name = "<%= @server_name %>";
+    name = "ratbox.services";
     sid = "36D";
     description = "<%= @server_description %>";
     dcc_low_port = 3000;
@@ -17,8 +17,7 @@ serverinfo {
     client_flood_ignore_time = 5 minutes;
     client_flood_time = 1 minute;
     allow_stats_o = yes;
-    allow_sslonly = no;
-    #default_language = "en";
+    default_language = "en";
 };
 
 /* admin: contains general admin information */
@@ -44,7 +43,6 @@ connect "<%= node[:fqdn] %>" {
 operator "<%= oper[:nick] %>" {
     user = "<%= oper[:user] %>@<%= oper[:host] %>";
     password = "<%= oper[:password] %>";
-    #encrypted = no;
     flags = admin, dcc, route;
     userserv = admin;
     chanserv = admin;
@@ -111,7 +109,7 @@ service "chanserv" {
     max_bans = 50;
     expireban_frequency = 15 minutes;
     enforcetopic_frequency = 1 hour;
-    autojoin_empty = no;
+    autojoin_empty = yes;
     email_delowner = no;
     delowner_duration = 1 day;
     show_suspend_reasons = no;
@@ -125,7 +123,7 @@ service "nickserv" {
     username = "nick";
     host = "services.int";
     realname = "nickname services";
-    flags = opered, msg_self, disabled;
+    flags = opered, msg_self;
     loglevel = 3;
     max_nicks = 2;
     allow_set_warn = yes;

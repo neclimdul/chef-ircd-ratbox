@@ -29,6 +29,13 @@ else
     server_opers = search(:ircd_opers, "*:*")
 end
 
+directory node[:ircd][:services_config_path] do
+    mode 0775
+    owner "root"
+    group "irc"
+    action :create
+end
+
 template "#{node[:ircd][:services_config_path]}/ratbox-services.conf" do
     source "ratbox-services.conf.erb"
     mode 0644
