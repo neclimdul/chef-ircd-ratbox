@@ -1,3 +1,4 @@
+name             "ircd-ratbox"
 maintainer       "Rafael Fonseca"
 maintainer_email "rafael+github@bitsignal.com"
 license          "Apache 2.0"
