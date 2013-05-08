@@ -8,6 +8,8 @@ default[:ircd][:motd] = "Nothing to see here, move along"
 default[:ircd][:admin][:name] = "Example admin"
 default[:ircd][:admin][:email] = "admin@example.com"
 
+default[:ircd][:ircd_opers] = []
+
 default[:ircd][:service] = "ircd"
 default[:ircd][:package] = "ircd-ratbox"
 default[:ircd][:config_path] = "/etc/ircd"

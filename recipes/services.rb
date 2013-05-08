@@ -26,7 +26,7 @@ if Chef::Config[:solo]
         :password => "$1$uoIXxCX6$..iXN0jLHHLq6h/RYEG/Y/"
     } ]
 else
-    server_opers = search(:ircd_opers, "*:*")
+    server_opers = node[:ircd][:ircd_opers]
 end
 
 directory node[:ircd][:services_config_path] do

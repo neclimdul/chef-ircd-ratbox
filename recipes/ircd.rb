@@ -40,7 +40,7 @@ if Chef::Config[:solo]
         :password => "$1$uoIXxCX6$..iXN0jLHHLq6h/RYEG/Y/"
     } ]
 else
-    server_opers = search(:ircd_opers, "*:*")
+    server_opers = node[:ircd][:ircd_opers]
 end
 
 template "#{node[:ircd][:config_path]}/ircd.conf" do
