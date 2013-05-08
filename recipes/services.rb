@@ -56,7 +56,7 @@ template "#{node[:ircd][:services_config_path]}/ratbox-services.conf" do
         #:user_classes => node[:ircd][:auth][:classes],
         #:user_class_mapping => node[:ircd][:auth][:class_mapping]
     )
-    notifies :reload, "service[#{node[:ircd][:service]}]"
+    notifies :reload, "service[#{node[:ircd][:services_service]}]"
 end
 
 if platform? "debian", "ubuntu"
@@ -66,6 +66,6 @@ if platform? "debian", "ubuntu"
     end
 end
 
-service "ratbox-services" do
+service node[:ircd][:services_service] do
     action [ :enable, :start ]
 end
