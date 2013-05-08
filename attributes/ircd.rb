@@ -17,6 +17,11 @@ default[:ircd][:log_path] = "/var/log/ircd"
 default[:ircd][:share_path] = "/usr/share/ircd"
 default[:ircd][:services_config_path] = "/etc/ratbox-services"
 default[:ircd][:service_password] = "$1$uoIXxCX6$..iXN0jLHHLq6h/RYEG/Y/"
+# Service port for services. You should set this if want to connect services.
+# Its used by both the IRCD and the Services daemon for determining how to
+# communicate. A good default is 5555.
+default[:ircd][:service_port] = ""
+default[:ircd][:service_ircd_server] = "127.0.0.1"
 
 # For the below config variables all attributes are required!
 default[:ircd][:auth][:classes] = {

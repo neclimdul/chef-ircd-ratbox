@@ -30,10 +30,10 @@ admin {
 /* connect: specifies a server to connect to, name of uplink
  *          is specified in quotation marks
  */
-connect "<%= node[:fqdn] %>" {
-    host = "127.0.0.1";
+connect "<%= node[:ircd][:name] %>" {
+    host = "<%= node[:ircd][:service_ircd_server] %>";
     password = "<%= node[:ircd][:service_password] %>";
-    port = 5555;
+    port = <%= node[:ircd][:service_port] %>;
 };
 
 /* operator: specifies an oper who has extended access to services.

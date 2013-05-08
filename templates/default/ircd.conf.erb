@@ -60,10 +60,10 @@ operator "<%= o[:nick] %>" {
 
 <% end %>
 
-<% if node.recipe?('ircd-ratbox::services') %>
+<% if node[:ircd][:service_port] %>
 listen {
-    host = "127.0.0.1";
-    port = 5555;
+    host = "<%= node[:ircd][:service_ircd_server] %>";
+    port = <%= node[:ircd][:service_port] %>;
 };
 
 service {
@@ -71,10 +71,10 @@ service {
 };
 
 connect "ratbox.services" {
-    host = "127.0.0.1";
+    host = "<%= node[:ircd][:service_ircd_server] %>";
     send_password = "<%= node[:ircd][:service_password] %>";
     accept_password = "<%= node[:ircd][:service_password] %>";
-    port = 5555;
+    port = <%= node[:ircd][:service_port] %>;
     class = "server";
     flags = topicburst;
 };
