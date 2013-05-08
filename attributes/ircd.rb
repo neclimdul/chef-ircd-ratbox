@@ -1,23 +1,23 @@
-default["ircd"]["name"] = node["fqdn"]
-default["ircd"]["ip"] = node["ipaddress"]
-default["ircd"]["description"] = "Example server"
-default["ircd"]["network_name"] = "Example network"
-default["ircd"]["network_description"] = "Example network description"
-default["ircd"]["port"] = "6667"
-default["ircd"]["motd"] = "Nothing to see here, move along"
-default["ircd"]["admin"]["name"] = "Example admin"
-default["ircd"]["admin"]["email"] = "admin@example.com"
+default[:ircd][:name] = node[:fqdn]
+default[:ircd][:ip] = node[:ipaddress]
+default[:ircd][:description] = "Example server"
+default[:ircd][:network_name] = "Example network"
+default[:ircd][:network_description] = "Example network description"
+default[:ircd][:port] = "6667"
+default[:ircd][:motd] = "Nothing to see here, move along"
+default[:ircd][:admin][:name] = "Example admin"
+default[:ircd][:admin][:email] = "admin@example.com"
 
-default["ircd"]["service"] = "ircd"
-default["ircd"]["package"] = "ircd-ratbox"
-default["ircd"]["config_path"] = "/etc/ircd"
-default["ircd"]["log_path"] = "/var/log/ircd"
-default["ircd"]["share_path"] = "/usr/share/ircd"
-default["ircd"]["services_config_path"] = "/etc/ratbox-services"
-default["ircd"]["service_password"] = "$1$uoIXxCX6$..iXN0jLHHLq6h/RYEG/Y/"
+default[:ircd][:service] = "ircd"
+default[:ircd][:package] = "ircd-ratbox"
+default[:ircd][:config_path] = "/etc/ircd"
+default[:ircd][:log_path] = "/var/log/ircd"
+default[:ircd][:share_path] = "/usr/share/ircd"
+default[:ircd][:services_config_path] = "/etc/ratbox-services"
+default[:ircd][:service_password] = "$1$uoIXxCX6$..iXN0jLHHLq6h/RYEG/Y/"
 
 # For the below config variables all attributes are required!
-default["ircd"]["auth"]["classes"] = {
+default[:ircd][:auth][:classes] = {
 	"users" => {
 		"ping_time" => "2 minutes",
 		"number_per_ident" => "10",
@@ -49,7 +49,7 @@ default["ircd"]["auth"]["classes"] = {
 	}
 }
 
-default["ircd"]["auth"]["class_mapping"] = [ {
+default[:ircd][:auth][:class_mapping] = [ {
 	"user" => "*@*",
 	"class" => "users"
 } ]

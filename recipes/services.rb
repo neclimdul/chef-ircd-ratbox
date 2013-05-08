@@ -43,20 +43,20 @@ template "#{node[:ircd][:services_config_path]}/ratbox-services.conf" do
     group "root"
     variables(
         :opers => server_opers,
-        :server_port => node[:ircd][:port],
         :server_admin_name => node[:ircd][:admin][:name],
         :server_admin_email => node[:ircd][:admin][:email],
-        :server_name => node[:ircd][:name],
-        :server_ip => node[:ircd][:ip],
-        :server_user => node[:ircd][:auth][:user],
-        :server_class => node[:ircd][:auth][:class],
         :server_description => node[:ircd][:description],
-        :network_name => node[:ircd][:network_name],
-        :network_description => node[:ircd][:network_description],
-        :user_classes => node[:ircd][:auth][:classes],
-        :user_class_mapping => node[:ircd][:auth][:class_mapping]
+        #:server_name => node[:ircd][:name],
+        #:server_ip => node[:ircd][:ip],
+        #:server_port => node[:ircd][:port],
+        #:server_user => node[:ircd][:auth][:user],
+        #:server_class => node[:ircd][:auth][:class],
+        #:network_name => node[:ircd][:network_name],
+        #:network_description => node[:ircd][:network_description],
+        #:user_classes => node[:ircd][:auth][:classes],
+        #:user_class_mapping => node[:ircd][:auth][:class_mapping]
     )
-    notifies :reload, resources(:service => node[:ircd][:service])
+    notifies :reload, "service[#{node[:ircd][:service]}]"
 end
 
 if platform? "debian", "ubuntu"
